@@ -1,0 +1,57 @@
+---
+import { SITE } from "@/constants";
+import BaseLayout from "./BaseLayout.astro";
+
+const navLinks: { href: string; text: string }[] = [];
+---
+
+<BaseLayout>
+  <header class="layout">
+    <div class="container flex items-center gap-8 sm:gap-10 h-full">
+      <h2 class="font-bold text-2xl">Code Demo</h2>
+      {
+        navLinks?.length ? (
+          <nav>
+            <ul class="flex gap-4 sm:gap-6">
+              {navLinks.map(({ href, text }) => (
+                <li>
+                  <a href={href}>{text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null
+      }
+    </div>
+  </header>
+  <main class="layout">
+    <slot />
+  </main>
+  <footer class="layout">
+    <div class="container flex items-center justify-center h-full">
+      <p>
+        <a href={SITE.org.url} class="font-medium no-underline hover:underline">
+          {SITE.org.url}
+        </a>
+      </p>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  header:is(.layout) {
+    @apply bg-slate-200 text-slate-800 h-20 z-10;
+
+    nav a {
+      @apply font-medium text-lg items-center text-sky-900 hover:text-sky-950 hover:underline transition;
+    }
+  }
+
+  main:is(.layout) {
+    @apply container py-8 sm:py-12;
+  }
+
+  footer:is(.layout) {
+    @apply bg-slate-200 text-slate-800 h-20;
+  }
+</style>

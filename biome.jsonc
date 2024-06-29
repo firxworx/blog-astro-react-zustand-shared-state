@@ -1,0 +1,125 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "formatter": {
+    "enabled": true,
+    "lineWidth": 120,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "formatWithErrors": true,
+    "ignore": ["pnpm-lock.yaml"]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "off"
+      },
+      "style": {
+        "noNonNullAssertion": { "level": "warn" },
+        "useImportType": { "level": "error" }
+      },
+      "a11y": {
+        "noSvgWithoutTitle": {
+          "level": "off"
+        }
+      },
+      "suspicious": {
+        "noArrayIndexKey": { "level": "warn" }
+      },
+      "complexity": {
+        // collides with the noPropertyAccessFromIndexSignature tsconfig option
+        // https://github.com/biomejs/biome/issues/463
+        "useLiteralKeys": "off"
+      }
+      // current nursery rules seem to have issues with tsx
+      // "nursery": {
+      //   "all": true
+      // }
+    }
+  },
+  "javascript": {
+    "globals": ["Astro"],
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "trailingCommas": "all",
+      "semicolons": "asNeeded"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true,
+      "allowTrailingCommas": true
+    },
+    "formatter": {
+      "indentStyle": "space",
+      "trailingCommas": "none"
+    }
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": ["node_modules", "dist", "migrations", "coverage", "vendor", ".astro", ".vercel", ".turbo", "WIP"]
+    // "include": [
+    //   "*.json",
+    //   "*.jsonc",
+    //   "*.js",
+    //   "*.mjs",
+    //   "*.cjs",
+    //   "*.jsx",
+    //   "*.ts",
+    //   "*.mts",
+    //   "*.cts",
+    //   "*.tsx",
+    //   "*.d.ts",
+    //   "*.d.mts",
+    //   "*.d.cts",
+    //   "*.md",
+    //   "*.mdx",
+    //   "*.astro",
+    //   "*.vue",
+    //   "*.svelte"
+    // ]
+  },
+  "overrides": [
+    {
+      "include": ["package.json"],
+      "json": {
+        "formatter": {
+          "lineWidth": 1
+        }
+      }
+    },
+    {
+      "include": ["*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off"
+          }
+        }
+      }
+    },
+    {
+      // disable noDefaultExport rule for config files
+      "include": ["**/*.config.*"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
+}

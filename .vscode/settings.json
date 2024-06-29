@@ -1,0 +1,71 @@
+{
+  // use project version of typescript in vscode
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // manage memory usage of the TypeScript language server
+  // "typescript.tsserver.maxTsServerMemory": 2048,
+
+  // editor customization
+  "editor.guides.bracketPairs": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairsHorizontal": "active",
+
+  // exclude lockfile and node_modules content from CTRL+P search results
+  "search.exclude": {
+    "pnpm-lock.yaml": true,
+    "**/node_modules/*": true,
+    "tmp/*": true
+  },
+
+  // autosave with formatting on save
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+
+  // autocorrect lint issues on save
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+
+    // uncomment for eslint instead of biome
+    // "source.fixAll.eslint": "explicit"
+  },
+
+  "editor.defaultFormatter": "biomejs.biome",
+
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+
+  "[javascript][typescript][typescriptreact][json][jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // ensure intellisense offers autocomplete for tailwind classes
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+
+  // set tailwind root font size to match preset so intellisense calculates correct px values for rem (default: 16)
+  "tailwindCSS.rootFontSize": 16,
+
+  // enable tailwind intellisense
+  "tailwindCSS.codeActions": true,
+
+  // ensure vscode uses pnpm vs. npm
+  "npm.packageManager": "pnpm"
+
+  // eslint options
+  // @see https://github.com/microsoft/vscode-eslint/blob/main/README.md
+
+  // uncomment to use eslint v9+ flat config
+  // "eslint.useFlatConfig": true,
+
+  // uncomment to use eslint v9+ working directories (useful for monorepos)
+  // "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // configure eslint to use current workspace node version vs. vscode node version
+  // "eslint.runtime": "node",
+}

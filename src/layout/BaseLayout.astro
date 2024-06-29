@@ -1,0 +1,36 @@
+---
+import '@/styles/tailwind.css'
+import { DEFAULT_META } from '@/constants'
+
+export interface Props {
+  title?: string | undefined
+  description?: string | undefined
+  author?: string | undefined
+  keywords?: string | undefined
+}
+
+const { title, description, author, keywords } = Astro.props || DEFAULT_META
+---
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    {title ? <meta name="title" content={title} /> : null}
+    {description ? <meta name="description" content={description} /> : null}
+    {author ? <meta name="author" content={author} /> : null}
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
+
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* <link rel="sitemap" href="/sitemap-index.xml" /> */}
+    {/* <link rel="canonical" href={head.canonicalUrl} /> */}
+
+    <title>{title}</title>
+  </head>
+  <body class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+    <slot />
+  </body>
+</html>

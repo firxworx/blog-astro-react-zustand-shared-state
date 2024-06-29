@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Consider adding global css to `tailwind.preset.ts` under `addBase({...})` instead of here to benefit from IntelliSense.
+ */

@@ -1,0 +1,18 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    // enable jsx
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    // import path alias
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    // loosen restriction to support common react patterns
+    "exactOptionalPropertyTypes": false
+  },
+  "include": ["src/**/*", "*.ts"]
+}
