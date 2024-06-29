@@ -22,14 +22,14 @@ export type WidgetStore = WidgetState & WidtgetActions
 
 export const widgetStore = createStore<WidgetStore>()(
   devtools(
-    immer((draft, _get) => ({
+    immer((set, _get) => ({
       widgets: [],
       add: (widget) =>
-        draft((store) => {
+        set((store) => {
           store.widgets.push(widget)
         }),
       remove: (id) =>
-        draft((store) => {
+        set((store) => {
           store.widgets = store.widgets.filter((widget) => widget.id !== id)
         }),
     })),
