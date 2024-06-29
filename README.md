@@ -1,19 +1,6 @@
-# firxworx.com - Astro Code Demo Starter Template
+# firxworx.com blog - Astro + React Components Sharing State with Zustand
 
-Project starter/template project for code examples related to articles and guides from https://firxworx.com.
-
-This is a "blank slate" Astro project with a minimal layout and a few extras:
-
-- React
-- TailwindCSS
-
-Refer to `tailwind.config.ts` and `tailwind.preset.ts` for customizations.
-
-This repo is based on Astro's official `framework-react` template and bootstrapped using the following command:
-
-```sh
-pnpm create astro@latest --template framework-react --typescript=strictest --git --install ./PROJECT_NAME
-```
+Companion code to a blog post at https://firxworx.com that demonstrates how Astro and React components can share state using a zustand store created with `zustand/vanilla`.
 
 ## Prerequisites
 
@@ -37,5 +24,5 @@ pnpm dev
 
 Astro's dev server runs at http://localhost:4321 by default.
 
-Stop the dev server with CTRL/COMMAND + C.
+Stop the dev server with <kbd>command/control + q</kbd>
 
