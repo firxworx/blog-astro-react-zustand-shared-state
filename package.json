@@ -1,8 +1,17 @@
 {
-  "name": "fx-blog-astro-zustand-shared-state",
+  "name": "blog-astro-react-zustand-shared-state",
   "type": "module",
   "version": "0.0.1",
   "license": "UNLICENSED",
+  "author": {
+    "name": "Kevin Firko",
+    "url": "https://firxworx.com",
+    "email": "hello@firxworx.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firxworx/blog-astro-react-zustand-shared-state.git"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,7 +20,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome check",
-    "format": "biome check --write"
+    "format": "biome check --write",
+    "deploy:production": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",

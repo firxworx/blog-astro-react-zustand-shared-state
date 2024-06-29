@@ -4,8 +4,8 @@ import { loadEnv } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // astro integrations
-import node from '@astrojs/node'
 import react from '@astrojs/react'
+import node from '@astrojs/node'
 
 // postcss plugins for vite.css.postcss (tailwindcss is directly configured via postcss vs. using `@astrojs/tailwind`)
 import postCssOklabPolyfill from '@csstools/postcss-oklab-function'
@@ -32,18 +32,29 @@ export default defineConfig({
   site: ENV.ASTRO_CONFIG_SITE_URL || 'localhost:4321',
 
   /**
+   * Deployment of this demo is to a subdirectory so a deploy script will set this environment value.
+   */
+  base: ENV.ASTRO_CONFIG_BASE_PATHNAME || undefined,
+
+  /**
    * Set _server_ mode for SSR rendering (vs. _hybrid_ for mixed or _static_ for SSG rendering).
+   * This demo uses the node adapter in development to demonstrate SSR support vs. SSG for publishing the demo.
+   *
    * @see https://docs.astro.build/en/reference/configuration-reference/#output
    */
-  output: 'server',
+  output: IS_PRODUCTION ? 'static' : 'server',
 
   /**
    * Use an adapter that suits your deployment target (e.g. node/standalone, vercel, netlify, etc).
+   * This demo used the node adapter in development to demonstrate SSR support vs. SSG for publishing the demo.
+   *
    * @see https://docs.astro.build/en/reference/configuration-reference/#adapter
    */
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: IS_PRODUCTION
+    ? undefined
+    : node({
+        mode: 'standalone',
+      }),
 
   /**
    * Note that CSRF protection `checkOrigin: true` only works for server-rendered pages.
