@@ -2,6 +2,8 @@
 
 Companion code to a blog post at https://firxworx.com that demonstrates how Astro and React components can share state using a zustand store created using `zustand/vanilla`.
 
+Post: https://firxworx.com/blog/code/2024-06-23-astro-and-react-shared-state-with-zustand-stores/
+
 ## Prerequisites
 
 The following environment is recommended to run this project:

@@ -8,7 +8,7 @@ export const DEFAULT_META = {
 
 export const SITE = {
   article: {
-    url: 'https://firxworx.com/blog/astro-react-shared-state-with-zustand-stores',
+    url: 'https://firxworx.com/blog/code/2024-06-23-astro-and-react-shared-state-with-zustand-stores/',
   },
   project: {
     repo: 'https://github.com/firxworx/fx-blog-astro-zustand-shared-state',
