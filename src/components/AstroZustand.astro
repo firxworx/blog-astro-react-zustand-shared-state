@@ -1,0 +1,99 @@
+---
+import { Button } from "./ui/Button";
+import { Heading } from "./ui/Heading";
+
+/**
+ * Astro component that interfaces with the same zustand widget store as the React component.
+ */
+---
+
+<div>
+  <div class="grid grid-cols-1 gap-4">
+    <Heading as="h2">Astro + Zustand</Heading>
+
+    <Heading as="h3">Widgets</Heading>
+    <div id="astro-widgets-list"><p><em>No widgets</em></p></div>
+
+    <Heading as="h3">Actions</Heading>
+    <div class="widget-actions">
+      <Button id="astro-widgets-add" type="button">Add Widget</Button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { formatCurrencyUSD, generateRandomWidget } from "@/helpers/mock";
+  import { getState, subscribe, type Widget } from "@/stores/widget.store";
+
+  const widgetsList = document.getElementById("astro-widgets-list");
+  const addButton = document.getElementById("astro-widgets-add");
+
+  let widgets = getState().widgets;
+
+  function createRemoveWidgetItemButtonElement(
+    widget: Widget
+  ): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "button";
+    button.textContent = "Remove";
+    button.addEventListener("click", () => {
+      getState().remove(widget.id);
+    });
+
+    return button;
+  }
+
+  function createWidgetItemElement(widget: Widget): HTMLDivElement {
+    const div = document.createElement("div");
+    div.className = "widget-item";
+
+    const span = document.createElement("span");
+    span.innerHTML = `${formatCurrencyUSD(widget.price)} &mdash; ${widget.name}`;
+
+    const button = createRemoveWidgetItemButtonElement(widget);
+
+    div.appendChild(span);
+    div.appendChild(button);
+
+    return div;
+  }
+
+  function renderWidgetsListElement() {
+    widgets = getState().widgets;
+
+    if (widgetsList) {
+      if (widgets.length > 0) {
+        const ul = document.createElement("ul");
+        ul.className = "widget-list";
+
+        widgets.forEach((widget) => {
+          const li = document.createElement("li");
+          const widgetItem = createWidgetItemElement(widget);
+
+          ul.appendChild(li);
+          li.appendChild(widgetItem);
+        });
+
+        widgetsList.innerHTML = "";
+        widgetsList.appendChild(ul);
+      } else {
+        widgetsList.innerHTML = "<p><em>No widgets</em></p>";
+      }
+    }
+  }
+
+  addButton?.addEventListener("click", () => {
+    getState().add(generateRandomWidget(widgets.length + 1));
+    renderWidgetsListElement();
+  });
+
+  // initial render
+  renderWidgetsListElement();
+
+  // subscribe to store updates
+  subscribe((state) => {
+    widgets = state.widgets;
+    renderWidgetsListElement();
+  });
+</script>

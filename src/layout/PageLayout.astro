@@ -1,27 +1,33 @@
 ---
 import { SITE } from "@/constants";
 import BaseLayout from "./BaseLayout.astro";
+import { GitHubLink } from "@/components/ui/GitHub";
 
 const navLinks: { href: string; text: string }[] = [];
 ---
 
 <BaseLayout>
   <header class="layout">
-    <div class="container flex items-center gap-8 sm:gap-10 h-full">
-      <h2 class="font-bold text-2xl">Code Demo</h2>
-      {
-        navLinks?.length ? (
-          <nav>
-            <ul class="flex gap-4 sm:gap-6">
-              {navLinks.map(({ href, text }) => (
-                <li>
-                  <a href={href}>{text}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ) : null
-      }
+    <div
+      class="container flex items-center justify-between gap-8 sm:gap-10 h-full"
+    >
+      <div class="flex items-center gap-8 sm:gap-10 h-full">
+        <h2 class="font-bold text-2xl">Code Demo</h2>
+        {
+          navLinks?.length ? (
+            <nav>
+              <ul class="flex gap-4 sm:gap-6">
+                {navLinks.map(({ href, text }) => (
+                  <li>
+                    <a href={href}>{text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null
+        }
+      </div>
+      <GitHubLink href={SITE.project.repo} />
     </div>
   </header>
   <main class="layout">
@@ -40,7 +46,7 @@ const navLinks: { href: string; text: string }[] = [];
 
 <style>
   header:is(.layout) {
-    @apply bg-slate-200 text-slate-800 h-20 z-10;
+    @apply bg-slate-200 text-slate-800 h-20 z-10 border-b border-slate-300;
 
     nav a {
       @apply font-medium text-lg items-center text-sky-900 hover:text-sky-950 hover:underline transition;
@@ -52,6 +58,10 @@ const navLinks: { href: string; text: string }[] = [];
   }
 
   footer:is(.layout) {
-    @apply bg-slate-200 text-slate-800 h-20;
+    @apply bg-slate-200 text-slate-800 h-20 border-t border-slate-300;
+
+    a {
+      @apply font-medium text-sky-900 hover:text-sky-950 transition-colors;
+    }
   }
 </style>

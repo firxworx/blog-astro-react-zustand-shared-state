@@ -1,8 +1,56 @@
 ---
-import { Hello } from "@/components/Hello";
+import AstroZustand from "@/components/AstroZustand.astro";
+import { ReactZustand } from "@/components/ReactZustand";
+import { Heading } from "@/components/ui/Heading";
+import { SITE } from "@/constants";
 import PageLayout from "@/layout/PageLayout.astro";
 ---
 
 <PageLayout>
-  <Hello />
+  <Heading as="h1">Astro + React + Zustand</Heading>
+
+  <div class="my-4 sm:my-6 flex flex-col gap-2 text-lg">
+    <p class="text-lg">
+      A demonstration of <a href="https://astro.build/">Astro</a> and
+      <a href="https://react.dev/">React</a> components sharing state via a
+      <a href="https://github.com/pmndrs/zustand">zustand</a> store.
+    </p>
+    <p>
+      <a href={SITE.article.url}>Read the blog post</a>
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+    <div class="box"><ReactZustand client:load /></div>
+    <div class="box"><AstroZustand /></div>
+  </div>
+
+  <style>
+    a {
+      @apply text-sky-800 hover:text-sky-900 transition-colors font-medium;
+      @apply no-underline hover:underline;
+    }
+
+    .box {
+      @apply p-4 bg-slate-200 rounded-md border border-slate-300;
+    }
+  </style>
+
+  <style is:global>
+    .button {
+      @apply bg-sky-800 hover:bg-sky-900 transition-colors text-white font-bold py-2 px-4 rounded;
+    }
+
+    .widget-list {
+      @apply flex flex-col gap-2 list-none;
+    }
+
+    .widget-item {
+      @apply flex items-center justify-between gap-4 flex-wrap p-2 bg-white/95 rounded-md;
+    }
+
+    .widget-actions {
+      @apply flex gap-4;
+    }
+  </style>
 </PageLayout>
