@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "vcs": {
     "enabled": true,
@@ -70,26 +70,6 @@
   "files": {
     "ignoreUnknown": true,
     "ignore": ["node_modules", "dist", "migrations", "coverage", "vendor", ".astro", ".vercel", ".turbo", "WIP"]
-    // "include": [
-    //   "*.json",
-    //   "*.jsonc",
-    //   "*.js",
-    //   "*.mjs",
-    //   "*.cjs",
-    //   "*.jsx",
-    //   "*.ts",
-    //   "*.mts",
-    //   "*.cts",
-    //   "*.tsx",
-    //   "*.d.ts",
-    //   "*.d.mts",
-    //   "*.d.cts",
-    //   "*.md",
-    //   "*.mdx",
-    //   "*.astro",
-    //   "*.vue",
-    //   "*.svelte"
-    // ]
   },
   "overrides": [
     {
