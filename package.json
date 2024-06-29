@@ -1,5 +1,5 @@
 {
-  "name": "fx-blog-astro-starter",
+  "name": "fx-blog-astro-zustand-shared-state",
   "type": "module",
   "version": "0.0.1",
   "license": "UNLICENSED",
@@ -21,11 +21,14 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.11.3",
     "clsx": "^2.1.1",
+    "immer": "^10.1.1",
+    "nanoid": "^5.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.4",
     "tailwind-merge": "^2.3.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
