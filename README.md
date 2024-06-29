@@ -1,6 +1,6 @@
-# firxworx.com blog - Astro + React Components Sharing State with Zustand
+# Astro + React Shared State with Zustand Stores
 
-Companion code to a blog post at https://firxworx.com that demonstrates how Astro and React components can share state using a zustand store created with `zustand/vanilla`.
+Companion code to a blog post at https://firxworx.com that demonstrates how Astro and React components can share state using a zustand store created using `zustand/vanilla`.
 
 ## Prerequisites
 
@@ -24,5 +24,5 @@ pnpm dev
 
 Astro's dev server runs at http://localhost:4321 by default.
 
-Stop the dev server with <kbd>command/control + q</kbd>
+Stop the dev server with <kbd>command/control + c</kbd>
 
